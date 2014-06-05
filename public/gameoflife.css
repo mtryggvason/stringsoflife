@@ -1,6 +1,4 @@
-.inactive{
-	background-color:white;
-}
+
 .active{
 	background-color:black;
 }
@@ -13,8 +11,13 @@
 	margin:0px;
 }
 #tempo_control{
-	width:40px;
-
+	width:45px;
+	margin-top:5px;
+	vertical-align: middle;
+}
+#start_button{
+	margin-top: 5px;
+	vertical-align: middle;
 }
 .center-wrapper{
   display: -webkit-flexbox;

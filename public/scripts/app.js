@@ -2,19 +2,20 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/Cell'
+  'views/Cell',
   ], function($,_, backbone, Cell){
     'use strict';
     var App = function(){
       var cells = [];
       var running = false;
       var intervalListener;
+      var appBufferLoader = 0;
       this.initialize = function(){
         for(var i=0; i<8;i++){
-          var row = $("<tr></tr>");
+          var row = $('<tr></tr>');
           cells[i]=[];
           for(var j=0;j<8;j++){
-            var cell = new Cell({i:i,j:j});
+            var cell = new Cell({i:i,j:j,context:appBufferLoader.context,sample:appBufferLoader.bufferList[j]});
             cells[i][j]=cell;
             row.append(cell.el);
           }
@@ -49,37 +50,39 @@ define([
           }
         }
       };
-     function isAlive(x,y){
-      var count = 0;
-      for(var i=x-1;i<=x+1;i++){
-        if(i<0||i>7){
-          continue;
-        }
-        for(var j=y-1;j<=y+1;j++){
-          if(j<0||j>7){
+      function isAlive(x,y){
+        var count = 0;
+        for(var i=x-1;i<=x+1;i++){
+          if(i<0||i>7){
             continue;
-          }     
-          if(cells[i][j].isActive()){
-            if(i==x&&j==y){   
-            }else{
-             count++;
-           }       
-         }
-       }
-     }
-     if(count==3){
-      cells[x][y].temp=true;
-    }
-    if(count>3){
-      cells[x][y].temp=false;   
-    }
-    if(count==2){
-      cells[x][y].temp=cells[x][y].active;  
-    }
-    if(count<2){
-      cells[x][y].temp=false;
-    }
-  }
-};
-return App;
-});
+          }
+          for(var j=y-1;j<=y+1;j++){
+            if(j<0||j>7){
+              continue;
+            }     
+            if(cells[i][j].isActive()){
+              if(!(i==x&&j==y)){  
+                count++;
+              }      
+            }
+          }
+        }
+        if(count==3){
+          cells[x][y].temp=true;
+        }
+        if(count>3){
+          cells[x][y].temp=false;   
+        }
+        if(count==2){
+          cells[x][y].temp=cells[x][y].active;  
+        }
+        if(count<2){
+          cells[x][y].temp=false;
+        }
+      }
+      this.setBufferLoader=function(bufferLoader){
+        appBufferLoader = bufferLoader;
+      };
+    };
+    return App;
+  });

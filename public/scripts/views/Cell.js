@@ -11,10 +11,10 @@ define([
 			events:{
 				'click':'toggleCell'
 			},
-			initialize:function(){
+			initialize:function(args){
 				this.active = false;
 				this.temp = false;
-				this.sampler = new Sampler();
+				this.sampler = new Sampler({context:args.context,sample:args.sample});
 			},
 			toggleCell:function(){
 				if(this.active){
@@ -26,13 +26,13 @@ define([
 			},
 			update:function(){
 				if(this.active){
-				//	this.sampler.play();
+				this.sampler.play();
 				}
 				if(this.temp&&!this.active){
-				//	this.sampler.play();
+				this.sampler.play();
 				}
 				if(!this.temp&&this.active){
-				//	this.sampler.stop();    
+				this.sampler.stop();    
 				}
 				this.active = this.temp;
 				this.toggleSquare();
