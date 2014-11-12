@@ -4,11 +4,13 @@
 			jquery:'jquery-1.9.1.min',
 			underscore:'underscore/underscore',
 			backbone:'backbone/backbone',
+			three:'threejs/three'
 		}
 	});
 	require([
 		'app',
-		'views/BufferLoader'
+		'views/BufferLoader',
+		'three' 
 		], function(App,BufferLoader){
 			'use strict';
 			var samples = [];
@@ -21,6 +23,10 @@
 			var bufferLoader = new BufferLoader(context,samples,app.initialize);
 			app.setBufferLoader(bufferLoader);
 			bufferLoader.load();
+
+
+		
+		
 		});
 
 

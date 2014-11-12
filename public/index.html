@@ -1,155 +1,22 @@
 <em><html>
-<head>
-	<link rel="stylesheet" type="text/css" href="gameoflife.css">
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script data-main="scripts/main" src="scripts/requirejs/require.js"></script> 
-	<!--<script>
-	var squares = new Array();
-	var context = new webkitAudioContext();
-	var intervalListener;
-	var running = false;
-	var nodes =[30.87,32.70,36.71,41.20,43.65,49,55];
-	var pizzicatoNodes = [];
-	function createSamples(nodeArray,callback){
-		for(var i = 0;i<22;i++){
-			var sound = new Audio();
-			sound.src= '/cello/'+(i+1)+'.mp3';
-			pizzicatoNodes[i]=sound;
-		}
-	}
-	function square(i,j) {
-		  this.active = false;
-		  this.temp = false;
-		  this.oscillator = new VCO(i,j);
-		  this.sampler = new Sampler(i,pizzicatoNodes);
-	}	
-		
-	function Sampler(i,sampleArray){
-		this.sample = sampleArray[i+j];
-		this.play=function(){
-			this.sample.play(0);
-		}
-		this.stop=function(){
-			this.sample.pause(); 
-			this.sample.currentTime=0;
-		}
-	}	
-	function VCO(i,j){
-		  this.oscillator = context.createOscillator();
-		  this.oscillator.frequency.value = nodes[i]*Math.pow(2,j);	
-		  this.gainNode = context.createGain();
-		  this.oscillator.connect(this.gainNode);
-		  this.gainNode.connect(context.destination);	
-		  this.envelope = new EnvelopeGenerator();
-		  this.envelope.connect(this.gainNode.gain);
-	}	
-	VCO.prototype.start = function(startTime,i,j) {
-		this.oscillator = context.createOscillator();
-		this.oscillator.frequency.value = nodes[i]*Math.pow(2,j);
-		this.oscillator.connect(this.gainNode);
-	    this.oscillator.start(startTime);
-		this.envelope.trigger();
-	}
-	
-	VCO.prototype.stop = function(stopTime) {
-	    this.oscillator.stop(stopTime);
-	}
-	$(document).ready(function() {
-		createSamples(pizzicatoNodes);
-	for(i=0;i<8;i++){
-		var row = $("<tr></tr>");
-		var squareRow = new Array();
-		for(j=0;j<8;j++){
-		squareRow[j]=new square(i,j);
-		var entry =$("<td class='inactive entry' id='a."+i+"."+j+"' style=''></td>");
-		squares[i]=squareRow;
-		entry.click(function(){
-			var squareId = $(this).attr('id');
-			var ids =squareId.split(".");
-			if(squares[ids[1]][ids[2]].active){
-				squares[ids[1]][ids[2]].active=false;	
-			}else{
-			squares[ids[1]][ids[2]].active=true;
-			}
-			toggleSquare(ids[1],ids[2]);
-		})
-		row.append(entry);
-	}
-	$("#grid_table").append(row);
-}
-$("#start_button").click(function(){
-	if(running){
-		running =false;
-		$("#start_button").text("Start");
-		window.clearInterval(intervalListener);
-		stopOscillators();
-	}else{
-	running =true;
-	var tempo = 60/$("#tempo_control").val();
-	intervalListener= setInterval(gameOfLife,tempo*1000);
-	$("#start_button").text("Stop");
-	}
-});
-$("#tempo_control").change(function(){
-	if(running){
-	window.clearInterval(intervalListener);
-	var tempo = 60/$("#tempo_control").val();
-	intervalListener= setInterval(gameOfLife,tempo*1000);
-	}
-});
-});
-
-function stopOscillators(){
-	for(var i=0;i<8;i++){
-		for(var j=0;j<8;j++){
-			//squares[i][j].oscillator.stop(0.2);			
-		}
-	}
-}
-function toggleSquare(x,y){
-	var toggle = "#a\\\."+x+"\\\."+y;
-	var context;		
-	if(squares[x][y].active){
-		$("#a\\."+x+"\\."+y).removeClass("inactive");
-		$("#a\\."+x+"\\."+y).addClass("active");
-	}
-	else{
-		$("#a\\."+x+"\\."+y).removeClass("active");
-		$("#a\\."+x+"\\."+y).addClass("inactive");	
-	}
-}	
+	<head>
+		<link rel="stylesheet" type="text/css" href="gameoflife.css">
+		<script data-main="scripts/main" src="scripts/requirejs/require.js"></script> 
+		<style>canvas { width: 100%; height: 100% }</style>
 
 
-function getRandomInt (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-  function EnvelopeGenerator() {
-    this.attackTime = 0.5;
-    this.releaseTime = 0.5;
- };
-EnvelopeGenerator.prototype.trigger = function() {
-    now = context.currentTime;
-    this.param.cancelScheduledValues(now);
-    this.param.setValueAtTime(0, now);
-    this.param.linearRampToValueAtTime(1, now + this.attackTime);
-    this.param.linearRampToValueAtTime(0, now + this.attackTime + this.releaseTime);
-  };
-EnvelopeGenerator.prototype.connect = function(param) {
-    this.param = param;
-  };	
-</script>-->
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-</head>
-<body>
-	<div class="center-wrapper">
-	<div class="table-cell-center">	
-	<table style="width:480px; margin:0 auto;" id="grid_table">
-	</table>
-	<div style="width:480px;margin:0 auto;text-align:center;" >
-	<button class="btn btn-success" id="start_button" type="submit">Start</button>
-	<input type="number" id="tempo_control" value ="120"></input>
-	</div>
-	</div>
-	</div>
-</body>
-</html></em>
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	</head>
+	<body>
+		<div class="center-wrapper" style="display:none;">
+			<div class="table-cell-center">	
+				<table style="width:480px; margin:0 auto;" id="grid_table">
+				</table>
+				<div style="width:480px;margin:0 auto;text-align:center;" >
+					<button class="btn btn-success" id="start_button" type="submit">Start</button>
+					<input type="number" id="tempo_control" value ="120"></input>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html></em>

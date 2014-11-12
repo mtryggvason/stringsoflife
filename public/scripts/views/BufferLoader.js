@@ -1,9 +1,7 @@
 
 define([
 	'jquery',    
-	'underscore',
-	'backbone',
-	], function($, _, Backbone){	
+	], function($){	
 		'use strict';
 		function BufferLoader(context,urlList, callback) {
 			this.context = context;
@@ -11,7 +9,6 @@ define([
 			this.onload = callback;
 			this.bufferList = new Array();
 			this.loadCount = 0;
-
 		}
 		BufferLoader.prototype.loadBuffer = function(url, index) {
 			var request = new XMLHttpRequest();
