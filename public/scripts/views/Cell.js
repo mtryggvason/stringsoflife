@@ -22,7 +22,6 @@ define([
 				var material = new THREE.MeshBasicMaterial({color:"#000000"});
 				this.cube = new THREE.Mesh(geometry, material);
 				this.cube.position.set( -1.75+this.i*0.5, -1.75+this.j*0.5 ,0 );
-				this.scene.add(this.cube);
 			},
 			toggleCell:function(){
 				if(this.active){
@@ -43,11 +42,10 @@ define([
 					this.sampler.stop();    
 				}
 				this.active = this.temp;
-				this.toggleSquare();
+				this.toggleCell();
 
 			},
 			isActive:function(){
-				console.log(this.active);
 				return this.active;
 			},
 			toggleSquare:function(){
