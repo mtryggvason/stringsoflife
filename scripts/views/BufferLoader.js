@@ -18,21 +18,18 @@ define([
 			request.onload = function() {
 				loader.context.decodeAudioData(
 					request.response,
-					function(buffer) {
+					function (buffer) {
 						if (!buffer) {
 							return;
 						}
 						loader.bufferList[index] = buffer;
-						if (++loader.loadCount == loader.urlList.length)
-							loader.onload(loader.bufferList);
-					}    
-					);
+						if (++loader.loadCount == loader.urlList.length) loader.onload(loader.bufferList);
+					});
 			};
 			request.send();
 		}
 		BufferLoader.prototype.load = function() {
 			for (var i = 0; i < this.urlList.length; i++){
-				console.log(this.urlList[i]);
 				this.loadBuffer(this.urlList[i], i);
 			}
 		}

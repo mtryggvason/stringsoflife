@@ -23,12 +23,12 @@ define([
         renderer.setSize(window.innerWidth, window.innerHeight);
         generateCells();
         $('#start_button').click(function(){
-          if(running){
+          if (running) {
             running =false;
             $('#start_button').text('Start');
             window.clearInterval(intervalListener);
             $('#start_button').addClass('btn-success').removeClass('btn-danger');
-          }else{
+          } else {
             running =true;
             var tempo = 60/$('#tempo_control').val();
             intervalListener= setInterval(gameOfLife,tempo*1000);
@@ -44,11 +44,11 @@ define([
         appBufferLoader = bufferLoader;
       };
       var generateCells=function(){
-        for(var i=0; i<8;i++){
+        for(var i=0; i < 8; i++) {
           cells[i]=[];
-          for(var j=0;j<8;j++){
-            var cell = new Cell({i:i,j:j,context:appBufferLoader.context,sample:appBufferLoader.bufferList[j]});
-            cells[i][j]=cell;
+          for(var j=0; j<8; j++) {
+            var cell = new Cell({i:i, j:j, context:appBufferLoader.context, sample:appBufferLoader.bufferList[j]});
+            cells[i][j] = cell;
             cell.render();
             cellGroup.add(cell.cube);
           }
@@ -83,8 +83,8 @@ define([
     }
     var onMouseMove = function(){
      if (mouseDown) {
-      cellGroup.rotation.x = cellGroup.rotation.x+(currentMousePosY-event.pageY)*0.01;
-      cellGroup.rotation.y = cellGroup.rotation.y+(currentMousePosX-event.pageX)*0.01;
+      cellGroup.rotation.x = cellGroup.rotation.x+(currentMousePosY-event.pageY) * 0.01;
+      cellGroup.rotation.y = cellGroup.rotation.y+(currentMousePosX-event.pageX) * 0.01;
       currentMousePosX = event.pageX;
       currentMousePosY = event.pageY;
     }
@@ -95,8 +95,8 @@ define([
           isAlive(i,j);
         }
       }
-      for(var x=0;x<8;x++){
-        for(var y=0;y<8;y++){
+      for (var x=0; x < 8; x++) {
+        for (var y=0; y < 8; y++) {
           cells[x][y].update();
           cells[x][y].toggleCell();
         }

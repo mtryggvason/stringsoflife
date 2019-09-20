@@ -20,7 +20,8 @@
 			var app = new App();
 			window.AudioContext = window.AudioContext || window.webkitAudioContext;
 			var context = new AudioContext();
-			var bufferLoader = new BufferLoader(context,samples,app.initialize);
+			var bufferLoader = new BufferLoader(context,samples, () => {});
+			app.initialize();
 			app.setBufferLoader(bufferLoader);
 			bufferLoader.load();
 		});

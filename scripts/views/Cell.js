@@ -18,6 +18,7 @@ define([
 				this.sampler = new Sampler({context:args.context,sample:args.sample});
 			},
 			render: function() {
+				debugger
 				var geometry = new THREE.BoxGeometry(0.3,0.3,0.1);
 				var material = new THREE.MeshBasicMaterial({color:"#000000"});
 				this.cube = new THREE.Mesh(geometry, material);
@@ -31,14 +32,14 @@ define([
 				}
 				this.toggleSquare();
 			},
-			update: function() {
+			update: function () {
 				if(this.active){
 					this.sampler.play();
 				}
-				if(this.temp&&!this.active){
+				if (this.temp&& !this.active) {
 					this.sampler.play();
 				}
-				if(!this.temp&&this.active){
+				if(!this.temp && this.active){
 					this.sampler.stop();    
 				}
 				this.active = this.temp;
