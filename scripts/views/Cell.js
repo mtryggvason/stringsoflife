@@ -9,7 +9,7 @@ define([
 		var Cell = Backbone.View.extend({
 			className:'cell',
 			tagName:'td',
-			initialize:function(args){
+			initialize: function(args){
 				this.scene=args.scene;
 				this.active = false;
 				this.temp = false;
@@ -17,13 +17,13 @@ define([
 				this.j = args.j
 				this.sampler = new Sampler({context:args.context,sample:args.sample});
 			},
-			render:function(){
+			render: function() {
 				var geometry = new THREE.BoxGeometry(0.3,0.3,0.1);
 				var material = new THREE.MeshBasicMaterial({color:"#000000"});
 				this.cube = new THREE.Mesh(geometry, material);
 				this.cube.position.set( -1.75+this.i*0.5, -1.75+this.j*0.5 ,0 );
 			},
-			toggleCell:function(){
+			toggleCell: function() {
 				if(this.active){
 					this.active = false;
 				}else{
@@ -31,7 +31,7 @@ define([
 				}
 				this.toggleSquare();
 			},
-			update:function(){
+			update: function() {
 				if(this.active){
 					this.sampler.play();
 				}
@@ -45,10 +45,10 @@ define([
 				this.toggleCell();
 
 			},
-			isActive:function(){
+			isActive:function() {
 				return this.active;
 			},
-			toggleSquare:function(){
+			toggleSquare:function() {
 				if(this.active){
 					this.cube.material.color.setRGB(255,0,0);
 				}else{

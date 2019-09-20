@@ -82,16 +82,16 @@ define([
       mouseDown = false;
     }
     var onMouseMove = function(){
-     if(mouseDown){
+     if (mouseDown) {
       cellGroup.rotation.x = cellGroup.rotation.x+(currentMousePosY-event.pageY)*0.01;
       cellGroup.rotation.y = cellGroup.rotation.y+(currentMousePosX-event.pageX)*0.01;
       currentMousePosX = event.pageX;
       currentMousePosY = event.pageY;
     }
   };
-    var gameOfLife=function(){
-      for(var i=0;i<8;i++){
-        for(var j=0;j<8;j++){
+    var gameOfLife=function() {
+      for (var i=0;i < 8; i++) {
+        for (var j=0;j < 8; j++) {
           isAlive(i,j);
         }
       }
@@ -102,13 +102,13 @@ define([
         }
       }
     };
-    var isAlive = function(x,y){
+    var isAlive = function(x,y) {
       var count = 0;
-      for(var i=x-1;i<=x+1;i++){
+      for(var i=x-1; i<=x+1; i++){
         if(i<0||i>7){
           continue;
         }
-        for(var j=y-1;j<=y+1;j++){
+        for(var j=y-1; j<=y+1; j++){
           if(j<0||j>7){
             continue;
           }     

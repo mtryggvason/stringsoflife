@@ -23,10 +23,6 @@
 			var bufferLoader = new BufferLoader(context,samples,app.initialize);
 			app.setBufferLoader(bufferLoader);
 			bufferLoader.load();
-
-
-		
-		
 		});
 
 
