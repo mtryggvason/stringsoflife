@@ -4,12 +4,12 @@
 }
 .controler{
 	width: 480px;
-margin: 0 auto;
-text-align: center;
-position: fixed;
-bottom: 20px;
-left: 50%;
-margin-left: -240px;
+	margin: 0 auto;
+	text-align: center;
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -240px;
 }
 .cell{
 	width:38px;
@@ -42,4 +42,7 @@ margin-left: -240px;
 }
 .table-cell-center{
 	position: relative;
+}
+canvas {
+	cursor: move
 }
