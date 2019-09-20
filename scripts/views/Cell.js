@@ -18,7 +18,6 @@ define([
 				this.sampler = new Sampler({context:args.context,sample:args.sample});
 			},
 			render: function() {
-				debugger
 				var geometry = new THREE.BoxGeometry(0.3,0.3,0.1);
 				var material = new THREE.MeshBasicMaterial({color:"#000000"});
 				this.cube = new THREE.Mesh(geometry, material);
