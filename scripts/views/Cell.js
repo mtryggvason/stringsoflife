@@ -22,7 +22,7 @@ define([
 				var geometry = new THREE.BoxGeometry(0.3,0.3,0.1);
 				var material = new THREE.MeshBasicMaterial({color:"#000000"});
 				this.cube = new THREE.Mesh(geometry, material);
-				this.cube.position.set( -1.75+this.i*0.5, -1.75+this.j*0.5 ,0 );
+				this.cube.position.set(-1.75 + this.i * 0.5, -1.75 + this.j * 0.5 ,0 );
 			},
 			toggleCell: function() {
 				if(this.active){
