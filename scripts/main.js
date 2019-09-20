@@ -14,7 +14,7 @@
 		], function(App,BufferLoader){
 			'use strict';
 			var samples = [];
-			for(var i = 1; i< 16; i++) {
+			for(var i = 1; i< 10; i++) {
 				samples[i-1] = 'cello/'+i+'.mp3';
 			}
 			var app = new App();
