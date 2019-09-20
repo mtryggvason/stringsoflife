@@ -1,0 +1,23 @@
+{
+  "name": "stringsoflife",
+  "version": "1.0.0",
+  "description": "<h2>Strings of Life</h2>",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/serve/bin/serve.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtryggvason/stringsoflife.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtryggvason/stringsoflife/issues"
+  },
+  "homepage": "https://github.com/mtryggvason/stringsoflife#readme",
+  "dependencies": {
+    "serve": "^11.1.0"
+  }
+}
